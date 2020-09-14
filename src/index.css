@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.state-sn {
+  background-color: #282c34;
+  cursor : pointer;
+
+  background: url(/public/logo192.png)
+  
+}

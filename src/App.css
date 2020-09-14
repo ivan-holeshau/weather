@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.state-hc {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 104px;
+  min-width:  104px;
+  background: url('https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg');
+  background-size:contain;
+  margin:0px 20px;
+  
+}
+
+
+.itemCardWeather {
+  min-width: 190px;
+  margin:10px 20px;
+  /* flex-direction: row; */
+}
+
+.rowWeathers{
+  display: flex;
+  flex-direction: row;
+  justify-items: first baseline;
+}
+
+.styleTemp{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin:10px 10px
+}
+
+.styleTemp p {
+  margin: 3px 10px;
+}
+
+.visualPicture {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
+/* .state-sl {background("/static/img/weather/sl.svg")}
+.state-h {background("/static/img/weather/h.svg")}
+.state-t {background("/static/img/weather/t.svg")}
+.state-hr {background("/static/img/weather/hr.svg")}
+.state-lr {background("/static/img/weather/lr.svg")}
+.state-s {background("/static/img/weather/s.svg")}
+.state-hc {background("/static/img/weather/hc.svg")}
+.state-lc {background("/static/img/weather/lc.svg")}
+*/
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
