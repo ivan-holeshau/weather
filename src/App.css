@@ -10,6 +10,16 @@
 }
 
 
+
+.picture2{
+  background: url('/weather/64/2.png');
+  height: 64px;
+  width:  64px;
+  /* background: url('https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'); */
+  background-size:contain;
+}
+
+
 .itemCardWeather {
   min-width: 190px;
   margin:10px 20px;

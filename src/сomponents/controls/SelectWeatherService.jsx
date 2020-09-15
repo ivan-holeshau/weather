@@ -11,15 +11,21 @@ function SelectWeatherService (props) {
   const listServise = useSelector(state => state.weatherReducer.listServiseWeather)
   const dispatch = useDispatch()
   const handleChange = event => {
+    console.log(event.target)
     dispatch(setTypeServiceWeather(event.target.value))
   }
   return (
     <Box width="120px">
-      <FormControl variant="standard" fullWidth={true}>
+      <FormControl variant="standard" fullWidth>
         <InputLabel id="select-service">servise</InputLabel>
-        <Select labelId="select-service" id="select" value={selectServise} onChange={handleChange}>
+        <Select
+          labelId="select-service"
+          id="select"
+          value={selectServise || 0}
+          onChange={handleChange}
+        >
           {listServise.map((item, index) => (
-            <MenuItem key={index} value={index}>
+            <MenuItem key={index} value={index} native="true" name={index}>
               {item}
             </MenuItem>
           ))}

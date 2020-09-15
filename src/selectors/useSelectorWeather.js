@@ -1,6 +1,9 @@
-
-export const СITYES_SEARCH = state=>state.weatherReducer.searchСityInCountry
-export const СITY = state => state.weatherReducer.сityName
+export const СITYES_SEARCH = state => state.weatherReducer.searchСityInCountry
+export const СITY = state => state.weatherReducer.cityName
 export const TIMER = state => state.weatherReducer.timer
 export const GEOMETRY_СITY = state => state.weatherReducer.geometry
 export const SELECT_SERVISE = state => state.weatherReducer.SelectTypeServiseWeather
+export const GetTemp = state => state.searchWeatherReducer.weatherForDay.temp
+export const GetSpeedWind = state => state.searchWeatherReducer.weatherForDay.speedWind
+export const GetCodeWeather = state => state.searchWeatherReducer.weatherForDay.cod
+export const CURENT_СITY = state => state.searchWeatherReducer.weatherForDay.curentCity

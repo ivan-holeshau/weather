@@ -1,16 +1,11 @@
 import {
   SET_CITY,
-  SEACR_CORDINATE_CITY,
   SET_SEARCH_CITY_IN_COUNTRY,
   SET_TIMER,
   SET_GEOMETRY,
   SET_TYPE_SERVICE_WEATHER,
-  CLEAR_SEARCH_CITY_IN_COUNTRY
+  CLEAR_SEARCH_CITY_IN_COUNTRY,
 } from '../constant/actions'
-
-// export function serachWeather (text) {
-//   return seacrCordinateToCITY(text)
-// }
 
 export function setCity (CITY) {
   return {
