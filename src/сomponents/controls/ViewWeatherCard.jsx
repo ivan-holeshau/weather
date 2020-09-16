@@ -5,13 +5,13 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import { connect } from 'react-redux'
 import selector from '../../selectors/index'
-import { Div } from '../../theme'
+import { Div, ViewWeatherCardItem } from '../../theme'
 
 function ViewWeatherCard (props) {
   const { city, temp, speedWind, codWeather } = props
   if (codWeather > -1) {
     return (
-      <Box width="60%">
+      <ViewWeatherCardItem>
         <Div styleDiv="column">
           <Card className="1">
             <CardContent>
@@ -30,7 +30,7 @@ function ViewWeatherCard (props) {
             </CardContent>
           </Card>
         </Div>
-      </Box>
+      </ViewWeatherCardItem>
     )
   } else {
     return <h3>no found weather</h3>

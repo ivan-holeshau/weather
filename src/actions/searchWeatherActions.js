@@ -8,10 +8,9 @@ export function searcWeatherForCityTheMetaweather (geometry, city) {
   const { lat, lng } = geometry
   return async dispatch => {
     const response = await fetch(
-      `http://api.weatherstack.com/current?access_key=5349f4e06fa7c90de8051147284f2cbf&query=${lat},${lng}`
+      `http://api.weatherstack.com/current?access_key=5349f4e06fa7c90de8051147284f2cbf&query=${lat},${lng}`,
     )
     const json = await response.json()
-    console.log('json=', json)
     dispatch(setWeather(json, city))
   }
 }

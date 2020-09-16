@@ -41,7 +41,6 @@ function setSearchCountry (CITYes) {
 
 async function parseJsonCityToMap (response, CITY) {
   const json = await response.json()
-  console.log(json)
   const map = json.results.map(item => {
     return {
       country: item.components.country,
@@ -51,7 +50,6 @@ async function parseJsonCityToMap (response, CITY) {
       geometry: item.geometry,
     }
   })
-  console.log(map)
   return map
 }
 

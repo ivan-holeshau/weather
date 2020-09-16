@@ -31,7 +31,6 @@ export function weatherReducer (state = initState, action) {
     case SET_TYPE_SERVICE_WEATHER:
       return { ...state, SelectTypeServiseWeather: action.playload }
     default:
-      console.log('state', action.type)
       return state
   }
 }

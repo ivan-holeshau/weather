@@ -11,7 +11,6 @@ function SelectWeatherService (props) {
   const listServise = useSelector(state => state.weatherReducer.listServiseWeather)
   const dispatch = useDispatch()
   const handleChange = event => {
-    console.log(event.target)
     dispatch(setTypeServiceWeather(event.target.value))
   }
   return (

@@ -19,7 +19,6 @@ export function searchWeatherReducer (state = initState, action) {
   switch (action.type) {
     case SET_WEATHER_THE_METAWEITHER: {
       const { payload: json, city } = action
-      console.log('city', city)
       let cod = json.current.weather_code
       mapCodeMetaweatherToMyWeatherCode.forEach((item, index) => {
         if (item.includes(cod)) cod = index
