@@ -7,3 +7,4 @@ export const GetTemp = state => state.searchWeatherReducer.weatherForDay.temp
 export const GetSpeedWind = state => state.searchWeatherReducer.weatherForDay.speedWind
 export const GetCodeWeather = state => state.searchWeatherReducer.weatherForDay.cod
 export const CURENT_СITY = state => state.searchWeatherReducer.weatherForDay.curentCity
+export const GET_ERROR = state => state.weatherReducer.error

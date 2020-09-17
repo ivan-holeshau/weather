@@ -1,11 +1,8 @@
-// const caches = 'network-or-cache-v1'
-const timeout = 400
-
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('v1').then(cache => {
       return cache.addAll([])
-    })
+    }),
   )
 })
 
@@ -22,6 +19,6 @@ self.addEventListener('fetch', event => {
         caches.open('v1').then(cache => cache.put(event.request, responseToCache))
         return response
       })
-    })
+    }),
   )
 })

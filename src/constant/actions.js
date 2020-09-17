@@ -7,6 +7,7 @@ export const SET_GEOMETRY = 'SET_GEOMETRY'
 export const SET_TYPE_SERVICE_WEATHER = 'SET_TYPE_SERVICE_WEATHER'
 export const CLEAR_SEARCH_CITY_IN_COUNTRY = 'CLEAR_SEARCH_CITY_IN_COUNTRY'
 export const nameWeather = ['Cолнечно', 'Дождь', 'Пасмурно', 'Снег', 'Туман']
+export const SET_ERROR = 'SET_ERROR'
 // export const MAPCODEYAHOOWEATHER = new Map[
 //   ([0, [31, 32, 33, 34, 36, 44]],
 //   [1, [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 35, 37, 38, 39, 40, 45, 47]],

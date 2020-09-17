@@ -21,6 +21,13 @@ export function setTimer (timer) {
   }
 }
 
+export function setError (value) {
+  return {
+    type: 'SET_ERROR',
+    payload: value,
+  }
+}
+
 export function seacrCordinateToCity (CITY) {
   return async dispatch => {
     if (CITY.length > 0) {

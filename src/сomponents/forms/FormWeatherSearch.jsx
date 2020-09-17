@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Box from '@material-ui/core/Box'
-import { setCity, seacrCordinateToCity, setTimer } from '../../actions/weatherActions'
+import Alert from '@material-ui/lab/Alert'
+import { setCity, seacrCordinateToCity, setTimer, setError } from '../../actions/weatherActions'
 import {
   searcWeatherForCityTheMetaweather,
   searchWeatherTheOpenweathermap,
@@ -13,8 +14,7 @@ import ButtonButtonSearchWeather from '../controls/ButtonSearchWeather'
 import selector from '../../selectors/index'
 import ViewWeatherCard from '../controls/ViewWeatherCard'
 import { Div, ViewWeatherCardItem, DivPanelSearch } from '../../theme'
-import _ from 'lodash'
-function City(props) {
+function City (props) {
   const {
     selectServise,
     geometryCity,
@@ -25,7 +25,8 @@ function City(props) {
     setTimer,
     searcWeatherForOneServise,
     searcWeatherForTwoServise,
-    citySearch,
+    error,
+    setErrors,
   } = props
   const onChange = event => {
     setCity(event.target.value)
@@ -34,20 +35,24 @@ function City(props) {
     const setTime = setTimeout(() => seacrCordinateToCity(city), 500)
     setTimer(setTime)
   }
-  //7200000
   const onClick = () => {
-    var debounced = _.debounce(() => searcWeatherForTwoServise(geometryCity, city), 5000, {
-      leading: true,
-    })
-    debounced()
-    // if (geometryCity) {
-    //   city && selectServise
-    //     ? debounced()
-    //     : _.throttle(() => searcWeatherForOneServise(geometryCity, city), 7200000)
-    // // } else throw Error()
+    if (geometryCity && city) {
+      selectServise
+        ? searcWeatherForTwoServise(geometryCity, city)
+        : searcWeatherForOneServise(geometryCity, city)
+    } else {
+      setErrors(true)
+      setTimeout(() => setErrors(false), 2000)
+    }
   }
+
   return (
     <ViewWeatherCardItem>
+      {error ? (
+        <Alert severity="error">Что то не так, возможно не коректно указан город</Alert>
+      ) : (
+        <div> </div>
+      )}
       <h3>Weather</h3>
       <Div styleDiv="column">
         <DivPanelSearch styleDiv="rows">
@@ -68,18 +73,20 @@ function City(props) {
   )
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     city: selector.СITY(state),
     timer: selector.TIMER(state),
     geometryCity: selector.GEOMETRY_СITY(state),
     selectServise: selector.SELECT_SERVISE(state),
     citySearch: selector.СITYES_SEARCH(state),
+    error: selector.GET_ERROR(state),
   }
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     setCity: text => dispatch(setCity(text)),
+    setErrors: value => dispatch(setError(value)),
     seacrCordinateToCity: city => dispatch(seacrCordinateToCity(city)),
     setTimer: timer => dispatch(setTimer(timer)),
     searcWeatherForOneServise: (geometryCity, city) =>
@@ -90,31 +97,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(City)
-
-// // <Box display="flex" flexDirection="column" justifyContent="center">
-
-//       {/* <Box display="flex" flexDirection="column"> */}
-//         {/* <Box display="flex" flexDirection="column" width="100%"> */}
-//         <Div styleDiv='column'>
-//         <Div styleDiv='rows'>
-//           <InputSearchWeather InputSearchWeatherHandler={onChange} city={city} />
-//           <SelectWeatherService />
-//         </Div>
-//         <SearchCityes />
-//         </Div>
-//         <ButtonButtonSearchWeather onClickSearchWeather={onClick}/>
-
-//         border-bottom-left-radius: 20px; */}
-//         {/* </Box> */}
-//         <Box display="flex" alignItems="flex-start">
-
-//         </Box>
-//         <Box display="flex" alignItems="center">
-//             {/* <SelectWeatherService /> */}
-//             {/* <ButtonButtonSearchWeather onClickSearchWeather={onClick}  /> */}
-//           </Box>
-//       {/* </Box>
-//       </Div>
-
-//       <ViewWeatherCard />
-//     // </Box>

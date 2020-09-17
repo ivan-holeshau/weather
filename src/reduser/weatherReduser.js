@@ -5,6 +5,7 @@ import {
   SET_TYPE_SERVICE_WEATHER,
   SET_SEARCH_CITY_IN_COUNTRY,
   CLEAR_TIMER,
+  SET_ERROR,
 } from '../constant/actions'
 
 const initState = {
@@ -14,10 +15,13 @@ const initState = {
   searchСityInCountry: [],
   SelectTypeServiseWeather: '',
   listServiseWeather: ['metaweather', 'openweather'],
+  error: false,
 }
 
 export function weatherReducer (state = initState, action) {
   switch (action.type) {
+    case SET_ERROR:
+      return { ...state, error: action.payload }
     case SET_CITY:
       return { ...state, cityName: action.playload, searchXityInCountry: [], geometry: null }
     case SET_SEARCH_CITY_IN_COUNTRY:

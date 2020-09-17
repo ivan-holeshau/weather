@@ -20,7 +20,12 @@ export const DivPanelSearch = styled.div`
     align-items: center;
   }
 `
-
+export const Picture = styled.div`
+background: url('/weather/64/${props => props.code}.png');
+height: 64px;
+width:  64px;
+background-size:contain;
+`
 export const MenuItemList = styled.div`
   border: 1px solid;
   border-bottom-left-radius: 20px;

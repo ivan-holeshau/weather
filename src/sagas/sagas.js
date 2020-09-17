@@ -8,10 +8,14 @@ export function* watchSearcWeatherForCityTheYahoo () {
 function* fetchWeatherAsync (event) {
   const { lat, lng } = event.payload
   const { city } = event
-  const json = yield call(() => {
-    return fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=54f7b3f65d502c008db7b9dbb05fc965`,
-    ).then(res => res.json())
-  })
-  yield put(setWeatherTheOpenweathers(json, city))
+  if (city) {
+    const json = yield call(() => {
+      return fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=54f7b3f65d502c008db7b9dbb05fc965`,
+      ).then(res => res.json())
+    })
+    yield put(setWeatherTheOpenweathers(json, city))
+  } else {
+    throw new Error()
+  }
 }

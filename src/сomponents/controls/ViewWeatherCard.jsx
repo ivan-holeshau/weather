@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import { connect } from 'react-redux'
 import selector from '../../selectors/index'
-import { Div, ViewWeatherCardItem } from '../../theme'
+import { Div, ViewWeatherCardItem, Picture } from '../../theme'
 
 function ViewWeatherCard (props) {
   const { city, temp, speedWind, codWeather } = props
@@ -24,7 +24,8 @@ function ViewWeatherCard (props) {
                   <p>Temperature: {temp}°c</p>
                 </Box>
                 <div style={{ margin: '30px' }}>
-                  <div className={'picture' + 2} />
+                  {/* <div className={'picture' + 2} /> */}
+                  <Picture code={codWeather} />
                 </div>
               </Box>
             </CardContent>

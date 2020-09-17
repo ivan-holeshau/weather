@@ -8,6 +8,7 @@ import {
   GetSpeedWind,
   GetCodeWeather,
   CURENT_СITY,
+  GET_ERROR,
 } from './useSelectorWeather'
 
 export default {
@@ -20,4 +21,5 @@ export default {
   GetSpeedWind,
   GetCodeWeather,
   CURENT_СITY,
+  GET_ERROR,
 }

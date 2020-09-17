@@ -14,9 +14,9 @@ self.addEventListener('activate', event => {
             console.log('Deleting cache: ' + key)
             return caches.delete(key)
           }
-        })
-      )
-    )
+        }),
+      ),
+    ),
   )
 })
 
@@ -39,36 +39,90 @@ self.addEventListener('install', function (event) {
             cache.addAll(urlsToCache)
             console.log('cached')
           })
-      })
+      }),
     )
   }
 })
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(function (response) {
-      if (response) {
+    caches.match(event.request).then(async function (response) {
+      let chek = true
+      if (event.request.url.indexOf('openweathermap.') > -1) {
+        if (await selectCachOrFetch(response, 'dateServiseOpenweathermap')) {
+          chek = false
+        }
+      }
+      if (event.request.url.indexOf('weatherstack.com') > -1) {
+        if (await selectCachOrFetch(response, 'dateServiseWeatherstack')) {
+          chek = false
+        }
+      }
+
+      if (response && chek) {
         console.log('response')
-        console.log(response, event.request)
         return response
       }
+
       return fetch(event.request).then(response => {
         const responseToCache = response.clone()
 
-        const cachWithTimer = {
-          date: new Date().getTime(),
-        }
-        responseToCache.daty = cachWithTimer
-        // console.log('responseToCache',responseToCache)
         caches.open('v1').then(cache => cache.put(event.request, responseToCache))
-        console.log('event.request', event.request)
-        if (event.request.url.indexOf('fonts.gstatic.com') > -1)
-          caches.open('v1').then(cache => cache.put('date', responseToCache))
-        console.log('fetch')
+        if (event.request.url.indexOf('weatherstack.com') > -1) {
+          caches
+            .open('v1')
+            .then(cache =>
+              cache.put(new Request('dateServiseWeatherstack'), new Response(new Date().getTime())),
+            )
+          console.log('fetch')
+        }
+        if (event.request.url.indexOf('openweathermap.') > -1) {
+          caches
+            .open('v1')
+            .then(cache =>
+              cache.put(
+                new Request('dateServiseOpenweathermap'),
+                new Response(new Date().getTime()),
+              ),
+            )
+          console.log('fetch')
+        }
         return response
       })
-    })
+    }),
   )
 })
+
+function selectCachOrFetch (response, type) {
+  const TIMER = 7200000
+  if (type === 'dateServiseOpenweathermap') {
+    return caches
+      .match(new Request('dateServiseOpenweathermap'))
+      .then(async responses => {
+        const preTime = await responses.text()
+        const curentTime = new Date().getTime()
+        if (curentTime - preTime < TIMER) {
+          return false
+        } else {
+          return true
+        }
+      })
+      .catch(() => true)
+  }
+  if (type === 'dateServiseWeatherstack') {
+    return caches
+      .match(new Request('dateServiseWeatherstack'))
+      .then(async responses => {
+        const preTime = await responses.text()
+        const curentTime = new Date().getTime()
+        if (curentTime - preTime < TIMER) {
+          return false
+        } else {
+          return true
+        }
+      })
+      .catch(() => true)
+  }
+}
 // When the webpage goes to fetch files, we intercept that request and serve up the matching files
 // if we have them

@@ -1,4 +1,4 @@
-
+/* 
 .state-hc {
   background-color: #282c34;
   height: 104px;
@@ -7,23 +7,23 @@
   background-size:contain;
   margin:0px 20px;
   
-}
+} */
 
 
 
-.picture2{
+/* .picture2{
   background: url('/weather/64/2.png');
   height: 64px;
   width:  64px;
   /* background: url('https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'); */
-  background-size:contain;
-}
-
-
+  /* background-size:contain;
+} */ 
+ 
+/* 
 .itemCardWeather {
   min-width: 190px;
   margin:10px 20px;
-  /* flex-direction: row; */
+ 
 }
 
 .rowWeathers{
@@ -48,7 +48,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
+} */
 /* .state-sl {background("/static/img/weather/sl.svg")}
 .state-h {background("/static/img/weather/h.svg")}
 .state-t {background("/static/img/weather/t.svg")}
@@ -57,5 +57,5 @@
 .state-s {background("/static/img/weather/s.svg")}
 .state-hc {background("/static/img/weather/hc.svg")}
 .state-lc {background("/static/img/weather/lc.svg")}
-*/
+*/ 
 
