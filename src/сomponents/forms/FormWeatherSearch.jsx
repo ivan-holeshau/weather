@@ -10,9 +10,9 @@ import SearchCityes from '../controls/SearchCityesSelect'
 import { connect } from 'react-redux'
 import SelectWeatherService from '../controls/SelectWeatherService'
 import InputSearchWeather from '../controls/InputSearchWeather'
-import ButtonButtonSearchWeather from '../controls/ButtonSearchWeather'
+import ButtonButtonSearchWeather from '../controls/ButtonSearchWeather.jsx'
 import selector from '../../selectors/index'
-import ViewWeatherCard from '../controls/ViewWeatherCard'
+import ViewWeatherCard from '../controls/ViewWeatherCard/ViewWeatherCardContainer'
 import { Div, ViewWeatherCardItem, DivPanelSearch } from '../../theme'
 function City (props) {
   const {

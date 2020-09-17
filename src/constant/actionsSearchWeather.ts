@@ -1,14 +1,9 @@
-// export const SEARCH_WEATHER = 'SEARCH_WEATHER_'
-// export const SEARCH_ID_CITY = 'SEARCH_ID_CITY'
-// export const SET_ID_CITY = 'SET_ID_CITY'
-
-export const SET_WEATHER_THE_METAWEITHER = 'SET_WEATHER_THE_METAWEITHER'
-export const SET_WEATHER_THE_OPENWEATHERMAP = 'SET_WEATHER_THE_OPENWEATHERMAP'
-export const INIT = 'INIT'
-export const SEARCH_WEATHER_THE_OPENWEATHERMAP =
-  'SEARCH_WEATHER_THE_OPENWEATHERMAP'
-export const mapCodeMetaweatherToMyWeatherCode = new Map([
-  ['0', [113]],
+export const SET_WEATHER_THE_METAWEITHER: string = 'SET_WEATHER_THE_METAWEITHER'
+export const SET_WEATHER_THE_OPENWEATHERMAP: string = 'SET_WEATHER_THE_OPENWEATHERMAP'
+export const INIT: string = 'INIT'
+export const SEARCH_WEATHER_THE_OPENWEATHERMAP: string = 'SEARCH_WEATHER_THE_OPENWEATHERMAP'
+export const mapCodeMetaweatherToMyWeatherCode: <number, number[]> = new Map([
+  [0, [113]],
   [
     1,
     [
@@ -38,27 +33,7 @@ export const mapCodeMetaweatherToMyWeatherCode = new Map([
   [2, [116, 119, 122]],
   [
     3,
-    [
-      182,
-      185,
-      227,
-      230,
-      317,
-      320,
-      323,
-      326,
-      329,
-      332,
-      335,
-      338,
-      350,
-      368,
-      371,
-      374,
-      377,
-      392,
-      395,
-    ],
+    [182, 185, 227, 230, 317, 320, 323, 326, 329, 332, 335, 338, 350, 368, 371, 374, 377, 392, 395],
   ],
   [4, [143, 248, 269]],
 ])

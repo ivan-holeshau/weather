@@ -1,11 +1,10 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
-import './App.css'
 import Sity from './сomponents/forms/FormWeatherSearch'
 
 // import Weather from './сomponents/View/WeatherDay'
-function App () {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Container maxWidth="sm">
