@@ -1,11 +1,15 @@
-import { setWeatherTheOpenweathers } from '../actions/searchWeatherActions'
+import { setWeatherTheOpenweathers,searchOpenWweather } from '../actions/searchWeatherActions'
 import { call, put, takeEvery } from 'redux-saga/effects'
+import {Actions} from '../actions/interfaceActions'
+import {} from 'redux-saga'
+
 
 export function* watchSearcWeatherForCityTheYahoo () {
-  yield takeEvery('SEARCH_WEATHER_THE_OPENWEATHERMAP', fetchWeatherAsync)
+  yield takeEvery(searchOpenWweather, fetchWeatherAsync)
 }
 
-function* fetchWeatherAsync (event) {
+
+function* fetchWeatherAsync (event: { payload?: any; city?: any }) {
   const { lat, lng } = event.payload
   const { city } = event
   if (city) {

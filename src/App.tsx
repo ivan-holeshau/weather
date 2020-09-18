@@ -1,15 +1,15 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
-import Sity from './сomponents/forms/FormWeatherSearch'
-
+import Sita from './сomponents/forms/FormWeatherSearch/FormWeatherSearchConatiner'
+ 
 // import Weather from './сomponents/View/WeatherDay'
 const App: React.FC = () => {
   return (
     <div className="App">
       <Container maxWidth="sm">
         <Box display="flex" flexDirection="column">
-          <Sity />
+          <Sita />
           {/* <Weather /> */}
         </Box>
       </Container>

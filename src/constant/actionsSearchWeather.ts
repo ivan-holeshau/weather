@@ -1,8 +1,8 @@
-export const SET_WEATHER_THE_METAWEITHER: string = 'SET_WEATHER_THE_METAWEITHER'
-export const SET_WEATHER_THE_OPENWEATHERMAP: string = 'SET_WEATHER_THE_OPENWEATHERMAP'
-export const INIT: string = 'INIT'
-export const SEARCH_WEATHER_THE_OPENWEATHERMAP: string = 'SEARCH_WEATHER_THE_OPENWEATHERMAP'
-export const mapCodeMetaweatherToMyWeatherCode: <number, number[]> = new Map([
+export const SET_WEATHER_THE_METAWEITHER = 'SET_WEATHER_THE_METAWEITHER'
+export const SET_WEATHER_THE_OPENWEATHERMAP = 'SET_WEATHER_THE_OPENWEATHERMAP'
+export const INIT = 'INIT'
+export const SEARCH_WEATHER_THE_OPENWEATHERMAP = 'SEARCH_WEATHER_THE_OPENWEATHERMAP'
+export const MAP_CODE_METAWEATHER_TO_MY_WEATHER_CODE = new Map<number, number[]>([
   [0, [113]],
   [
     1,
@@ -37,7 +37,7 @@ export const mapCodeMetaweatherToMyWeatherCode: <number, number[]> = new Map([
   ],
   [4, [143, 248, 269]],
 ])
-export const mapCodeOpenweatherToMyWeatherCode = new Map([
+export const MAP_CODE_OPENWEATHER_TO_MY_WEATHER_CODE = new Map<number, number[]>([
   [0, [800]],
   [
     1,
@@ -78,4 +78,3 @@ export const mapCodeOpenweatherToMyWeatherCode = new Map([
   [4, [701, 711, 721, 731, 741, 751, 761, 762, 771, 781]],
 ])
 
-export const nameWeather = ['Cолнечно', 'Дождь', 'Пасмурно', 'Снег', 'Туман']

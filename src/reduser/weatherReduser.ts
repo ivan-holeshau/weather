@@ -8,17 +8,33 @@ import {
   SET_ERROR,
 } from '../constant/actions'
 
+import {Action} from './index'
+import {Map} from '../actions/interfaceActions'
+export interface Geometry {
+  lat:number, lng:number
+}
+
+export interface StateWeatherReducer {
+  timer:number
+  cityName:string
+  geometry:Geometry
+  searchСityInCountry:Map[]
+  SelectTypeServiseWeather:number
+  listServiseWeather:string[]
+  error:boolean
+}
+
 const initState = {
-  timer: '',
+  timer: 0,
   cityName: '',
   geometry: { lat: 0, lng: 0 },
   searchСityInCountry: [],
-  SelectTypeServiseWeather: '',
+  SelectTypeServiseWeather: 0,
   listServiseWeather: ['metaweather', 'openweather'],
   error: false,
 }
 
-export function weatherReducer (state = initState, action) {
+export function weatherReducer (state:StateWeatherReducer = initState, action:Action) {
   switch (action.type) {
     case SET_ERROR:
       return { ...state, error: action.payload }

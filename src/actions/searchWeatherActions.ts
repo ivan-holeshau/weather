@@ -4,16 +4,23 @@ import {
   SEARCH_WEATHER_THE_OPENWEATHERMAP,
   INIT,
 } from '../constant/actionsSearchWeather'
-
+import { Actions } from './interfaceActions'
+import {Geometry} from '../reduser/weatherReduser'
+import { Dispatch, AnyAction } from 'redux'
 export function initStore () {
   return {
     type: INIT,
   }
-}
+} 
 
-export function searcWeatherForCityTheMetaweather (geometry, city) {
+export const searchOpenWweather:Actions =()=>{
+  return{
+  type:'SEARCH_WEATHER_THE_OPENWEATHERMAP'}}
+
+export function searcWeatherForCityTheMetaweather (value:Geometry, city:string):(dispatch:Dispatch)=>void {
+
   if (city) {
-    const { lat, lng } = geometry
+    const { lat, lng } = value
     return async dispatch => {
       const response = await fetch(
         `http://api.weatherstack.com/current?access_key=5349f4e06fa7c90de8051147284f2cbf&query=${lat},${lng}`,
@@ -24,28 +31,29 @@ export function searcWeatherForCityTheMetaweather (geometry, city) {
   } else {
     throw new Error()
   }
+
 }
 
-export function setWeatherTheOpenweathers (json, city) {
+export const setWeatherTheOpenweathers:Actions = (value, city) =>{
   return {
     type: SET_WEATHER_THE_OPENWEATHERMAP,
-    payload: json,
+    payload: value,
     city: city,
   }
 }
 
-export function searchWeatherTheOpenweathermap (geometry, city) {
+export const searchWeatherTheOpenweathermap:Actions = (value, city) => {
   return {
     type: SEARCH_WEATHER_THE_OPENWEATHERMAP,
-    payload: geometry,
+    payload: value,
     city: city,
   }
 }
 
-function setWeather (weather, city) {
+const setWeather:Actions = (value, city) =>{
   return {
     type: SET_WEATHER_THE_METAWEITHER,
-    payload: weather,
+    payload: value,
     city: city,
   }
 }

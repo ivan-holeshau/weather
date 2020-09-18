@@ -1,45 +1,60 @@
 import {
-  mapCodeMetaweatherToMyWeatherCode,
+  MAP_CODE_METAWEATHER_TO_MY_WEATHER_CODE,
   SET_WEATHER_THE_METAWEITHER,
   SET_WEATHER_THE_OPENWEATHERMAP,
-  mapCodeOpenweatherToMyWeatherCode,
+  MAP_CODE_OPENWEATHER_TO_MY_WEATHER_CODE,
   INIT,
 } from '../constant/actionsSearchWeather'
 
+import { Action } from './index'
+
 const initDayWeather = {
-  temp: 0,
-  speedWind: 0,
-  cod: -1,
-  curentCity: '',
+  temp: '0',
+  speedWind: '0',
+  cod: '-1',
+  curentCity: ' ',
 }
 
 const initState = {
   weatherForDay: initDayWeather,
 }
 
-export function searchWeatherReducer (state = initState, action) {
+interface DayWeather {
+  temp: string 
+  speedWind: string 
+  cod: string 
+  curentCity: string 
+}
+
+export interface StateSearchWeatherReducer {
+  weatherForDay: DayWeather
+}
+
+export function searchWeatherReducer(state: StateSearchWeatherReducer = initState, action: Action) {
   switch (action.type) {
     case INIT: {
-      const initDayWeather = {
-        temp: 0,
-        speedWind: 0,
-        cod: -1,
+      const initDayWeather:DayWeather = {
+        temp: '0',
+        speedWind: '0',
+        cod: '-1',
         curentCity: '',
       }
 
       if (localStorage.getItem('cod')) {
-        initDayWeather.temp = localStorage.getItem('temp')
-        initDayWeather.speedWind = localStorage.getItem('speedWind')
-        initDayWeather.cod = localStorage.getItem('cod')
-        initDayWeather.curentCity = localStorage.getItem('curentCity')
+        
+        initDayWeather.temp = localStorage.getItem('temp') || ''
+        initDayWeather.speedWind = localStorage.getItem('speedWind') || ''
+        initDayWeather.cod = localStorage.getItem('cod')||''
+        initDayWeather.curentCity = localStorage.getItem('curentCity')||''
       }
 
       return { ...state, weatherForDay: initDayWeather }
     }
     case SET_WEATHER_THE_METAWEITHER: {
       const { payload: json, city } = action
+      
       let cod = json.current.weather_code
-      mapCodeMetaweatherToMyWeatherCode.forEach((item, index) => {
+      MAP_CODE_METAWEATHER_TO_MY_WEATHER_CODE.forEach((item, index) => {
         if (item.includes(cod)) cod = index
       })
       const weatherForDay = {
@@ -60,19 +75,19 @@ export function searchWeatherReducer (state = initState, action) {
     case SET_WEATHER_THE_OPENWEATHERMAP: {
       const { payload: json, city } = action
       let cod = json.weather[0].id
-      mapCodeOpenweatherToMyWeatherCode.forEach((item, index) => {
+      MAP_CODE_OPENWEATHER_TO_MY_WEATHER_CODE.forEach((item, index) => {
         if (item.includes(cod)) cod = index
       })
       const weatherForDay = {
-        temp: Math.floor(json.main.temp - 273, 15),
+        temp: Math.floor(json.main.temp - 273),
         speedWind: json.wind.speed,
         cod: cod,
         curentCity: city,
       }
-      localStorage.setItem('temp', weatherForDay.temp)
-      localStorage.setItem('speedWind', weatherForDay.speedWind)
-      localStorage.setItem('cod', weatherForDay.cod)
-      localStorage.setItem('curentCity', weatherForDay.curentCity)
+      localStorage.setItem('temp', weatherForDay.temp.toString())
+      localStorage.setItem('speedWind', weatherForDay.speedWind.toString())
+      localStorage.setItem('cod', weatherForDay.cod.toString())
+      localStorage.setItem('curentCity', weatherForDay.curentCity.toString())
       return {
         ...state,
         weatherForDay: weatherForDay,

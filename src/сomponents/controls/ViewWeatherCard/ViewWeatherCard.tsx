@@ -3,22 +3,24 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import { Div, ViewWeatherCardItem, Picture } from '../../../theme'
+import {ViewWeatherCardItem } from '../../styledComponents/ViewWeatherCardItem'
+import {Div,Picture} from '../../styledComponents/styledComponents'
 
 interface ViewWeatherCardPropsPrivate {
-  city: string
-  temp: number
-  speedWind: number
-  codWeather: number
+  city: string 
+  temp: string
+  speedWind: string
+  codWeather: string
+  
 }
 
-const ViewWeatherCard: React.FC<ViewWeatherCardPropsPrivate> = ({
+export const ViewWeatherCard: React.FC<ViewWeatherCardPropsPrivate> = ({
   city,
   temp,
   speedWind,
   codWeather,
 }) => {
-  if (codWeather > -1) {
+   if ((Number.parseInt(codWeather)) > -1) {
     return (
       <ViewWeatherCardItem>
         <Div styleDiv="column">
@@ -33,17 +35,17 @@ const ViewWeatherCard: React.FC<ViewWeatherCardPropsPrivate> = ({
                   <p>Temperature: {temp}°c</p>
                 </Box>
                 <div style={{ margin: '30px' }}>
-                  <Picture code={codWeather} />
+                  {/* <Picture code={codWeather} /> */}
                 </div>
               </Box>
             </CardContent>
           </Card>
         </Div>
       </ViewWeatherCardItem>
+      
     )
   } else {
     return <h3>no found weather</h3>
   }
 }
 
-export default ViewWeatherCard
